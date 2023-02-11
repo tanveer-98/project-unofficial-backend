@@ -1,0 +1,13 @@
+{
+    "jwtPrivateKey": "gsp_jwtPrivateKey",
+    "MONGO_PATH": "mongodb+srv://gspuser:0t7bw0E7moau3NaS@gspdatabase.v6soc.mongodb.net/backend?retryWrites=true&w=majority",
+    "CLOUD_NAME": "dosokxc9a",
+    "CLOUDINARY_API_KEY": "373169512151154",
+    "CLOUDINARY_API_SECRET": "2CboNawQAtJOzL7g5CYlLZdfWaQ",
+    "NODEMAILER_EMAIL": "tnvrahmed98@zohomail.in",
+    "NODEMAILER_PASS": "yRk03NpsDF5m",
+    "NODEMAILER_RELAY": "tnvrahmed98@gmail.com",
+    "NODEMAILER_OFFICIAL_EMAIL": "info@apexconst.in",
+    "NODEMAILER_OFFICIAL_PASS": "Nayan@123",
+    "NODEMAILER_OFFICIALRELAY": "booking@apexconst.in"
+}

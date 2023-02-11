@@ -1,0 +1,60 @@
+sudo apt update
+sudo apt install nginx -y
+sudo apt-get remove docker docker-engine docker.io containerd runc -y
+sudo apt-get update
+sudo apt-get install -y ca-certificates curl gnupg lsb-release
+sudo mkdir -p /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+ echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo chmod a+r /etc/apt/keyrings/docker.gpg
+sudo apt-get update
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
+sudo chmod 666 /var/run/docker.sock
+
+
+docker login
+username: gspcode
+password: Nalbari@10##
+
+After docker Login:
+docker pull gspcode/gspbackend-image:latest
+docker run -p 3000:3000 -d gspcode/gspbackend-image
+
+nginx settings
+sudo nano /etc/nginx/sites-enabled/express.conf
+
+Paste:
+
+server {
+    listen 80; # Listen on port 80
+    listen [::]:80; # Listen on port 80 for ipv6
+    server_name _;
+    location / {
+        proxy_pass http://127.0.0.1:3000;
+    }
+
+}
+
+
+sudo rm /etc/nginx/sites-enabled/default
+sudo systemctl restart nginx
+sudo ufw allow 80/tcp
+
+Certbot:
+sudo snap install core; sudo snap refresh core
+sudo snap install --classic certbot
+sudo ln -s /snap/bin/certbot /usr/bin/certbot
+sudo certbot --nginx
+//Follow instructions
+
+Add elastic ip
+change domain to elastic ip
+
+On VM startup
+
+docker run -p 3000:3000 -d gspcode/gspbackend-image
+
+
+
